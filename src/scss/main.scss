@@ -1,0 +1,84 @@
+
+$primary: #67b4f7;
+$secondary: #326e46;
+$success:#666611;
+$danger: #fd7f78;
+$info:#2b8fe0;
+$warning:#f3f32d;
+$light:#f9f9f9;
+$dark:#121212;
+
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "danger": $danger,
+    "warning": $warning,
+    "light": $light,
+    "dark": $dark
+);
+
+// Create your own map
+$custom-colors: (
+    "custom-color1": rgb(153, 150, 0),
+    "custom-color2": rgb(13, 153, 0),
+    "custom-color3": rgb(0, 135, 153),
+    "custom-color4": rgb(83, 26, 216),
+);
+
+// Merge the maps
+// $theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+@each $color,
+$value in $theme-colors {
+    .swatch-#{$color} {
+        color: color-contrast($value);
+    }
+}
+
+$color: aqua;
+
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+
+// Remove from map
+// $theme-colors: map-remove($custom-colors, "custom-color3", "custom-color4");
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "./mixin";
+
+$red: #fce4e4;
+//color
+@for $i from 1 through 10 {
+    $color: red;
+    $color-value:lighten($color, 3% * $i);
+
+    .#{color}#{$i} {
+        color:$color-value;
+    }
+}
+
+
+//icon + avtar size 
+$values: 32, 40, 50, 80;
+
+@each $size in $values {
+    .icon-#{$size} {
+        font-size: $size;
+        height: $size;
+        width: $size;
+    }
+
+    .thumb-#{$size} {
+        border-radius: $size+px;
+        height: $size+px;
+        width: $size+px;
+    }
+}
+

@@ -1,0 +1,18 @@
+@mixin make-transitions($transitions...){
+    transition: $transitions;
+}
+
+
+%hero{background: darkblue;}
+%villain {
+    background: darkgoldenrod;
+}
+@mixin character($type:hero){
+    height: 20px;
+    width: 20px;
+    @extend %#{$type};
+}
+.doc-ock {
+    @include character(villain);
+}
+.cheeetah{@include character();}
